@@ -1,0 +1,23 @@
+import { Notification } from '@lockness/notification'
+import type { Notifiable } from '@lockness/notification'
+
+/**
+ * The {{className}} notification.
+ *
+ * Declare the channels in `via()` and build each channel's payload in its hook
+ * (`toMail`, `toDatabase`, `toBroadcast`, `toLog`). Set `queue = true` and
+ * implement `toQueue()` (constructor payload — identifiers only) to deliver it
+ * through the queue.
+ */
+export class {{className}} extends Notification {
+    override via(_notifiable: Notifiable): string[] {
+        return ['mail']
+    }
+
+    toMail(_notifiable: Notifiable) {
+        return {
+            subject: '{{className}}',
+            text: 'Edit this notification in app/notification.',
+        }
+    }
+}
